@@ -1,0 +1,6 @@
+hal_client_domain(system_server, hal_test);
+allow system_server hal_test_default:binder call;
+allow system_server hal_test_hwservice:hwservice_manager find;
+
+allow system_server hal_allocator:binder { call };
+allow system_server hal_allocator:fd { use };

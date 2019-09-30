@@ -1,0 +1,6 @@
+hal_client_domain(platform_app, hal_test);
+allow platform_app hal_test_default:binder call;
+allow platform_app hal_test_hwservice:hwservice_manager find;
+
+allow platform_app hal_allocator:binder { call };
+allow platform_app hal_allocator:fd { use };
