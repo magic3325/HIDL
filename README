@@ -1,0 +1,40 @@
+.
+├── hardware
+│   └── vendor
+│       └── tinno
+│           └── interfaces
+│               ├── libtest   hild与dev之间的借口API
+│               └── test      hild的具体实现；
+├── tvibrator_drv　　　　　　　　dev 驱动程序；
+├── HidlTest　　　　　　　　　　　app层对server 的调用实现；
+├── keytool　　　　　　　　　　　　platform.keystore　key 获取系统签名；
+├── System　　　　　　　　　　　　　常用知识；
+
+```
+diff --git a/mediatek/mt6765/device.mk b/mediatek/mt6765/device.mk
+index 82b085d..8cafd34 100644
+--- a/mediatek/mt6765/device.mk
++++ b/mediatek/mt6765/device.mk
+@@ -1160,3 +1160,5 @@ $(call inherit-product-if-exists, vendor/mediatek/mt6765/device-vendor.mk)
+
+ # .
+ -include vendor/tinno/common/hardware/interface/FactoryServer/configs.mk
++#  add.
++-include vendor/tinno/common/hardware/interface/test/configs.mk
+diff --git a/mediatek/vendor/common/BoardConfig.mk b/mediatek/vendor/common/BoardConfig.mk
+index 996a40a..24a4569 100644
+--- a/mediatek/vendor/common/BoardConfig.mk
++++ b/mediatek/vendor/common/BoardConfig.mk
+@@ -341,3 +341,7 @@ endif
+
+ #  add.
+ -include vendor/tinno/common/hardware/interface/FactoryServer/sepolicy/configs.mk
++
++#  add.
++-include vendor/tinno/common/hardware/interface/test/sepolicy/configs.mk
+```
+
+　1.需要在mediatek/mt6765/device.mk　中通添加test/configs.mk　将HIDL编译到系统中
+　2.需要在mediatek/vendor/common/BoardConfig.mk　添加test/sepolicy/configs.mk　讲　hidl　app　所需要的权限编译到系统中；
+  3.需要将tvibrator_drv　放在vendor/mediatek/kernel_modules/文件夹下；
+  

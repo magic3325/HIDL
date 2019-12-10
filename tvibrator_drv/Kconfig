@@ -1,0 +1,8 @@
+config MTK_VIBRATOR
+	tristate "Tinno Vibrator driver"
+	default n
+	  ---help---
+	  TVibrator driver support for Tinno SOC.
+	  You can customize the vibrate strength and lowest vibrate time.
+	  If you want to use MediaTek Vibrator driver, say Y or M here.
+	  If unsure, say N.

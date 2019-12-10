@@ -51,7 +51,8 @@ android {
 
 dependencies {
     compileOnly files('libs/framework.jar')
-    implementation files('libs/vendor.tinno.hardware.test-V1.0-java.jar')
+    //implementation files('libs/vendor.tinno.hardware.test-V1.0-java.jar')
+    implementation files('libs/classes.jar')
     //implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'

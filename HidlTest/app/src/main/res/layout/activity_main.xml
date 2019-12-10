@@ -32,6 +32,24 @@
         android:textAllCaps="false"
         android:onClick="hidlTest"
         />
+
+    <Button
+        android:id="@+id/on"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="On"
+        android:textAllCaps="false"
+        android:onClick="hidlOn"
+        />
+    <Button
+        android:id="@+id/off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Off"
+        android:textAllCaps="false"
+        android:onClick="hidlOff"
+        />
+
 </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

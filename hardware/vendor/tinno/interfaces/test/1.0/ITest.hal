@@ -1,0 +1,5 @@
+package vendor.tinno.hardware.test@1.0;
+
+interface ITest{
+   helloWorld(string name) generates (string result);
+};

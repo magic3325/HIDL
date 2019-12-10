@@ -1,5 +1,0 @@
-# HwBinder IPC from client to server
-binder_call(hal_test_client,hal_test_server)
-
-add_hwservice(hal_test_server, hal_test_hwservice)
-allow hal_test_client hal_test_hwservice: hwservice_manager find;

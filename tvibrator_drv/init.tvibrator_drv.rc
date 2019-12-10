@@ -1,0 +1,4 @@
+
+# load tvibrator_drv
+on property:vendor.connsys.driver.ready=yes
+  insmod /vendor/lib/modules/tvibrator_drv.ko

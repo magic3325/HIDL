@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mText;
     private EditText mEdit;
     private Button mBtn;
-
+    private Button mOnBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +28,9 @@ public class MainActivity extends AppCompatActivity {
         mEdit =(EditText) findViewById(R.id.edit);
         mBtn =(Button) findViewById(R.id.button);
 
+        //获取hidl服务
         try {
-            mITestServer =ITest.getService(); //获取服务
+            mITestServer =ITest.getService();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         if (mITestServer != null){
             Log.d("gunder", "service is connect.");
             String text = null;
+            //访问hidl接口
             try {
                 text = mITestServer.helloWorld(mEdit.getText().toString());//调用HAL层接口
             } catch (RemoteException e) {
@@ -49,5 +51,47 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, text, Toast.LENGTH_LONG).show();
         }
     }
+
+    public void hidlOn(View view){
+        if (mITestServer != null){
+            Log.d("gunder", "service is connect.");
+            int status=-1;
+            //访问hidl接口
+
+
+
+
+            try {
+                int time = Integer.parseInt(mEdit.getText().toString());
+                 status = mITestServer.on(time);//调用HAL层接口
+            } catch (RemoteException e) {
+                e.printStackTrace();
+
+            }catch (NumberFormatException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "请输入正确数字", Toast.LENGTH_LONG).show();
+            }
+
+            mText.setText(String.valueOf(status));
+            Toast.makeText(this, String.valueOf(status), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void hidlOff(View view){
+        if (mITestServer != null){
+            Log.d("gunder", "service is connect.");
+            int status=-1;
+            //访问hidl接口
+            try {
+                status = mITestServer.off();//调用HAL层接口
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+
+            mText.setText(String.valueOf(status));
+            Toast.makeText(this, String.valueOf(status), Toast.LENGTH_LONG).show();
+        }
+    }
+
 
 }
